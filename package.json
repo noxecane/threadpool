@@ -1,0 +1,20 @@
+{
+  "name": "threadpool",
+  "version": "0.1.0",
+  "description": "libuv based threadpool because I can",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "git@github.com:noxecane/threadpool.git",
+  "author": "Olakunle Arewa <arewa.olakunle@gmail.com>",
+  "private": false,
+  "scripts": {
+    "watch": "tsc --watch -p ./tsconfig.json",
+    "build": "tsc -p ./tsconfig.json",
+    "test": "jest --runInBand --detectOpenHandles --forceExit --passWithNoTests"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.2"
+  }
+}

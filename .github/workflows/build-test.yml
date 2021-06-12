@@ -1,0 +1,34 @@
+name: Build & Test
+
+on:
+  push:
+    branches-ignore:
+      - master
+
+jobs:
+  build-test:
+
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo
+        ports:
+        - 27017:27017
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '10.x'
+    - run: yarn install --frozen-lockfile
+    - run: yarn build
+    - name: Run tests
+      run: yarn test
+      env:
+        PORT: 3009
+        NODE_ENV: test
+        MONGODB_URL: mongodb://localhost:27017/customersuccess
+        SECURITY_KEY: 00cf2625b8529ea294a66e12c3f038df
+        PLUGIN_SECURITY_KEY: ae1eac8bc94e0f30415434ad634f005e
